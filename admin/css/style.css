@@ -1,3 +1,13 @@
 .toast {
     z-index: 9999999;
 }
+
+.box {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
+.logo {
+    mix-blend-mode: multiply;
+}

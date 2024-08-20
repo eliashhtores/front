@@ -13,3 +13,8 @@
 .social-login button {
     margin: 0 5px;
 }
+
+.logo {
+    max-width: 15%;
+    max-height: 15%;
+}
