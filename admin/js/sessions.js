@@ -1,4 +1,7 @@
-let url = "http://localhost:5000/session"
+let server = "http://localhost:5000"
+if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
+
+const url = `${server}/session`
 let id = "",
     mode
 const tbody = document.querySelector("tbody")
@@ -48,7 +51,7 @@ const getSession = async (id) => {
 }
 
 const loadCourses = async (selectedCourseId = null) => {
-    const courses = await http.get("http://localhost:5000/course")
+    const courses = await http.get(`${server}/course`)
     const courseSelect = document.querySelector("#courseID")
     courseSelect.innerHTML = ""
     courses.data.forEach((course) => {

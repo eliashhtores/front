@@ -1,4 +1,7 @@
-const url = "http://localhost:5000/user"
+let server = "http://localhost:5000"
+if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
+
+const url = `${server}/user`
 const form = document.querySelector("form")
 const toastWarning = new bootstrap.Toast(document.querySelector("#toastWarning"))
 const toastWarningBody = document.querySelector("#toastWarningBody")

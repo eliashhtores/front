@@ -1,4 +1,7 @@
-let url = "http://localhost:5000/course"
+let server = "http://localhost:5000"
+if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
+
+const url = `${server}/course`
 let id = "",
     mode
 // @@TODO Refactor to remove mode
