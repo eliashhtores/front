@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+        <meta
+            name="keywords"
+            content="adminkit, bootstrap, bootstrap 5, admin, dashboard, template, responsive, css, sass, html, theme, front-end, ui kit, web"
+        />
+
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
+
+        <link rel="canonical" href="https://demo-basic.adminkit.io/pages-blank.html" />
+
+        <title>Cursos</title>
+
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
+        <link
+            href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+            rel="stylesheet"
+        />
+        <link href="css/app.css" rel="stylesheet" />
+        <link href="css/style.css" rel="stylesheet" />
+
+        <link href="https://cdn.datatables.net/2.1.3/css/dataTables.bootstrap5.css" rel="stylesheet" />
+    </head>
+    <body>
+        <div class="wrapper">
+            <nav id="sidebar" class="sidebar js-sidebar">
+                <div class="sidebar-content js-simplebar">
+                    <a class="sidebar-brand" href="#">
+                        <span class="align-middle">Administración</span>
+                    </a>
+
+                    <ul class="sidebar-nav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="users.html">
+                                <i class="align-middle" data-feather="user"></i>
+                                <span class="align-middle">Usuarios</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item active">
+                            <a class="sidebar-link" href="courses.html">
+                                <i class="align-middle" data-feather="book"></i>
+                                <span class="align-middle">Cursos</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="sessions.html">
+                                <i class="align-middle" data-feather="film"></i>
+                                <span class="align-middle">Sesiones</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="main">
+                <nav class="navbar navbar-expand navbar-light navbar-bg">
+                    <a class="sidebar-toggle js-sidebar-toggle">
+                        <i class="hamburger align-self-center"></i>
+                    </a>
+
+                    <div class="navbar-collapse collapse">
+                        <ul class="navbar-nav navbar-align">
+                            <li class="nav-item dropdown">
+                                <button
+                                    type="button"
+                                    class="btn btn-info px-5"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#exitModal"
+                                >
+                                    Salir
+                                </button>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+
+                <main class="content">
+                    <div class="container-fluid p-0">
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <h1 class="h3 mb-3"><i class="align-middle" data-feather="book"></i> Cursos</h1>
+                            </div>
+                            <div class="col-sm-6 text-end">
+                                <button type="button" id="newCourseButton" class="btn btn-success btn-lg px-5">
+                                    Nuevo <i data-feather="plus-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <table id="courses" class="table table-striped" style="width: 100%">
+                                            <thead>
+                                                <tr>
+                                                    <th>Nombre</th>
+                                                    <th>Duración</th>
+                                                    <th>Precio</th>
+                                                    <th>Idioma</th>
+                                                    <th>Disponible en</th>
+                                                    <th>Marcación disponible (sólo escucha)</th>
+                                                    <th>Presentadores destacados</th>
+                                                    <th>Presentado por</th>
+                                                    <th>Asistieron</th>
+                                                    <th>Sesiones</th>
+                                                    <th>Activo</th>
+                                                    <th>Creado el</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody></tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+            </div>
+        </div>
+
+        <div class="modal" id="courseModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content rounded-4">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="courseModalLabel">Agregar/Editar curso</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <form>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" class="form-control" required id="name" name="name" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="length" class="form-label">Duración</label>
+                                <input type="text" class="form-control" required id="length" name="length" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="price" class="form-label">Precio</label>
+                                <input type="text" class="form-control" required id="price" name="price" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="language" class="form-label">Idioma</label>
+                                <input type="text" class="form-control" required id="language" name="language" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="availableAt" class="form-label">Disponible en</label>
+                                <input type="text" class="form-control" required id="availableAt" name="availableAt" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="mark" class="form-label">Marcación disponible (sólo escucha)</label>
+                                <input type="text" class="form-control" required id="mark" name="mark" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="presenter" class="form-label">Presentadores destacados</label>
+                                <input type="text" class="form-control" required id="presenter" name="presenter" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="presentedBy" class="form-label">Presentado por</label>
+                                <input type="text" class="form-control" required id="presentedBy" name="presentedBy" />
+                            </div>
+                            <div class="mb-3">
+                                <label for="attendance" class="form-label">Asistieron</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    class="form-control"
+                                    required
+                                    id="attendance"
+                                    name="attendance"
+                                />
+                            </div>
+                            <div class="mb-3">
+                                <label for="sessions" class="form-label">Sesiones</label>
+                                <input
+                                    type="number"
+                                    min="1"
+                                    class="form-control"
+                                    required
+                                    id="sessions"
+                                    name="sessions"
+                                />
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-success">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="modal fade" id="exitModal" tabindex="-1" aria-labelledby="exitModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">¿Desea terminar su sesión?</div>
+                    <div class="modal-footer">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-sm-6">
+                                    <button type="button" class="btn btn-danger px-5" data-bs-dismiss="modal">
+                                        No
+                                    </button>
+                                </div>
+                                <div class="col-sm-6 text-end">
+                                    <button
+                                        type="button"
+                                        class="btn btn-success px-5"
+                                        data-bs-dismiss="modal"
+                                        id="exit"
+                                    >
+                                        Sí
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="toast align-items-center text-white bg-success border-0 position-fixed top-0 end-0"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+            id="toastSuccess"
+        >
+            <div class="d-flex">
+                <div class="toast-body" id="toastSuccessBody"></div>
+                <button
+                    type="button"
+                    class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                ></button>
+            </div>
+        </div>
+
+        <div
+            class="toast align-items-center text-white bg-warning border-0 position-fixed top-0 end-0"
+            id="toastWarning"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+        >
+            <div class="d-flex">
+                <div class="toast-body" id="toastWarningBody"></div>
+                <button
+                    type="button"
+                    class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                ></button>
+            </div>
+        </div>
+
+        <div
+            class="toast align-items-center text-white bg-danger border-0 position-fixed top-0 end-0"
+            id="toastDanger"
+            role="alert"
+            aria-live="assertive"
+            aria-atomic="true"
+        >
+            <div class="d-flex">
+                <div class="toast-body" id="toastDangerBody">Ocurrió un error, favor de intentar más tarde.</div>
+                <button
+                    type="button"
+                    class="btn-close btn-close-white me-2 m-auto"
+                    data-bs-dismiss="toast"
+                    aria-label="Close"
+                ></button>
+            </div>
+        </div>
+
+        <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+        <script src="js/dataTables.js"></script>
+        <script src="https://cdn.datatables.net/2.1.3/js/dataTables.bootstrap5.js"></script>
+        <script src="js/app.js"></script>
+        <script src="js/http.js"></script>
+        <script src="js/utils.js"></script>
+        <script src="js/courses.js"></script>
+    </body>
+</html>

@@ -1,0 +1,15 @@
+#video,
+#login,
+.presenter-blocks {
+    cursor: pointer;
+}
+
+.modal-header {
+    border-bottom: none;
+}
+.modal-footer {
+    border-top: none;
+}
+.social-login button {
+    margin: 0 5px;
+}
