@@ -125,7 +125,7 @@ const fillRegistrationData = (data) => {
 const getCourseHistory = async (userID) => {
     courseModal.show()
     try {
-        const data = await http.get(`http://localhost:5000/registration/user/${userID}`)
+        const data = await http.get(`${server}/registration/user/${userID}`)
         fillRegistrationData(data)
     } catch (error) {
         console.error(error)
@@ -140,7 +140,7 @@ const enrollUser = async (userID) => {
     enrollModal.show()
     document.querySelector("#results").addEventListener("click", async (e) => {
         if (e.target.classList.contains("enrollButton")) {
-            const url = "http://localhost:5000/registration"
+            const url = `${server}/registration`
 
             const data = {
                 userID,
@@ -170,7 +170,7 @@ const enrollUser = async (userID) => {
 
 const getActiveCourses = async () => {
     try {
-        const data = await http.get("http://localhost:5000/course")
+        const data = await http.get(`${server}/course`)
         return data
     } catch (error) {
         console.error(error)
