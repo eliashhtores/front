@@ -28,6 +28,17 @@ form {
     display: none;
 }
 
+.logo {
+    max-width: 50%;
+    max-height: 50%;
+}
+
+.box {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+}
+
 #payment-message {
     color: rgb(105, 115, 134);
     font-size: 16px;

@@ -14,6 +14,5 @@ presenterBlocks.forEach((block) => {
 presentedByLinks.forEach((link) => {
     link.addEventListener("click", (e) => {
         e.preventDefault()
-        loginModal.show()
     })
 })
