@@ -11,7 +11,7 @@ document.querySelector("#payment-form").addEventListener("submit", handleSubmit)
 
 async function initialize() {
     let server = "http://127.0.0.1:5000"
-    if (window.location.hostname !== "localhost") server = "https://back-gjd8.onrender.com"
+    if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
     const response = await fetch(`${server}/create-payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -36,7 +36,8 @@ async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
     let server = "http://127.0.0.1:5500"
-    if (window.location.hostname !== "localhost") server = "https://festodiplomados.netlify.app"
+    if (window.location.hostname !== "127.0.0.1") server = "https://festodiplomados.netlify.app"
+    console.log(`Going to ${server}`)
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
@@ -78,8 +79,6 @@ async function checkStatus() {
     }
 }
 
-// ------- UI helpers -------
-
 function showMessage(messageText) {
     const messageContainer = document.querySelector("#payment-message")
 
@@ -94,7 +93,6 @@ function showMessage(messageText) {
 
 function setLoading(isLoading) {
     if (isLoading) {
-        // Disable the button and show a spinner
         document.querySelector("#submit").disabled = true
         document.querySelector("#spinner").classList.remove("hidden")
         document.querySelector("#button-text").classList.add("hidden")
