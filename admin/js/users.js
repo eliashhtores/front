@@ -133,7 +133,6 @@ const getCourseHistory = async (userID) => {
 }
 
 const enrollUser = async (userID) => {
-    const courseInput = document.querySelector("#courseInput")
     courseInput.value = ""
     document.querySelector("#results").innerHTML = ""
 
@@ -208,7 +207,7 @@ userForm.addEventListener("submit", async (e) => {
                 toastSuccessBody.innerHTML = "Usuario creado."
                 toastSuccess.show()
                 reloadTable()
-                sessionModal.hide()
+                userModal.hide()
                 break
             case 409:
                 toastWarningBody.innerHTML = "El usuario ya existe."
@@ -255,9 +254,13 @@ courseInput.addEventListener("input", (e) => {
     }))
 
     if (e.target.value) {
-        coursesArray = courseDetails.filter(
-            (course) => course.name.toLowerCase().includes(e.target.value) && course.active
-        )
+        coursesArray = courseDetails.filter((course) => {
+            const name = course.name.normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+            return (
+                (name.toLowerCase().includes(e.target.value) || course.name.toLowerCase().includes(e.target.value)) &&
+                course.active
+            )
+        })
         coursesArray.map((course) => {
             return (html += `<div class="row my-1">
                 <div class="col-sm-6 mt-2">${course.name}</div>

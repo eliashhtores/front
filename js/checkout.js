@@ -12,7 +12,7 @@ document.querySelector("#payment-form").addEventListener("submit", handleSubmit)
 async function initialize() {
     let server = "http://127.0.0.1:5000"
     if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
-    const response = await fetch(`${server}/create-payment-intent`, {
+    const response = await fetch(`${server}/payment/create-payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ items }),
