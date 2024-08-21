@@ -10,8 +10,8 @@ checkStatus()
 document.querySelector("#payment-form").addEventListener("submit", handleSubmit)
 
 async function initialize() {
-    let server = "http://localhost:5000"
-    if (window.location.hostname !== "127.0.0.1") server = "https://back-gjd8.onrender.com"
+    let server = "http://127.0.0.1:5000"
+    if (window.location.hostname !== "localhost") server = "https://back-gjd8.onrender.com"
     const response = await fetch(`${server}/create-payment-intent`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -35,9 +35,8 @@ async function initialize() {
 async function handleSubmit(e) {
     e.preventDefault()
     setLoading(true)
-    let server = "http://localhost:5500"
-    if (window.location.hostname !== "127.0.0.1") server = "https://festodiplomados.netlify.app"
-
+    let server = "http://127.0.0.1:5500"
+    if (window.location.hostname !== "localhost") server = "https://festodiplomados.netlify.app"
     const { error } = await stripe.confirmPayment({
         elements,
         confirmParams: {
