@@ -109,13 +109,16 @@ const updateUserStatus = async (id) => {
 const fillRegistrationData = (data) => {
     courses.innerHTML = ""
     data.forEach((course) => {
+        let link = "X"
+        if (course.active == "No") link = ""
         courses.innerHTML += `
                 <div class="container text-center">
-                    <div class="row align-items-start">
-                        <div class="col">${course.name}</div>
-                        <div class="col">${course.time_spent}</div>
-                        <div class="col">${course.active}</div>
-                        <div class="col">${course.created_at}</div>
+                    <div class="row">
+                        <div class="col-sm-4">${course.name}</div>
+                        <div class="col-sm-2">${course.time_spent}</div>
+                        <div class="col-sm-2">${course.active}</div>
+                        <div class="col-sm-2">${course.created_at}</div>
+                        <div class="col-sm-2"><a class="unsubscribe text-danger fw-bold" id=unsubscribe-${course.id}>${link}</a></div>
                     </div>
                 </div>
             `
@@ -151,7 +154,7 @@ const enrollUser = async (userID) => {
 
             const response = await http.post(url, data)
             if (response.status === 201) {
-                toastSuccessBody.innerHTML = "Usuario inscrito en el curso."
+                toastSuccessBody.innerHTML = "El usuario ha sido inscrito en el curso."
                 toastSuccess.show()
                 reloadTable()
                 return
@@ -165,6 +168,22 @@ const enrollUser = async (userID) => {
             toastDanger.show()
         }
     })
+}
+
+const removeSubscription = async (subscriptionID) => {
+    const url = `${server}/registration/status/${subscriptionID}`
+    const data = {
+        updatedBy: getUserID(),
+    }
+    const response = await http.patch(url, data)
+    if (response.status === 200) {
+        toastSuccessBody.innerHTML = "Baja exitosa."
+        toastSuccess.show()
+        courseModal.hide()
+        return
+    }
+    toastDangerBody.innerHTML = "Error al dar de baja."
+    toastDanger.show()
 }
 
 const getActiveCourses = async () => {
@@ -238,6 +257,14 @@ tbody.addEventListener("click", async (e) => {
     }
     if (e.target.classList.contains("enroll")) {
         enrollUser(e.target.id.split("-")[1])
+        return
+    }
+})
+
+courses.addEventListener("click", async (e) => {
+    e.preventDefault()
+    if (e.target.classList.contains("unsubscribe")) {
+        removeSubscription(e.target.id.split("-")[1])
         return
     }
 })

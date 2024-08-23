@@ -12,16 +12,17 @@ form.addEventListener("submit", async (e) => {
     const data = Object.fromEntries(formData)
     const loginButton = document.querySelector("#login")
     loginButton.disabled = true
+    loginButton.innerText = "Ingresando"
 
     http.post(`${url}/validate`, data).then((response) => {
         if (response.status === 200) {
             createSession(response.user)
             redirect()
             return
-        } else {
-            loginButton.disabled = false
-            toastWarningBody.innerHTML = "Favor de revisar su usuario y contraseña"
-            toastWarning.show()
         }
+        loginButton.disabled = false
+        loginButton.innerText = "Ingresar"
+        toastWarningBody.innerHTML = "Favor de revisar su usuario y contraseña"
+        toastWarning.show()
     })
 })
