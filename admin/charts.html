@@ -12,7 +12,7 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" />
         <link rel="shortcut icon" href="img/icons/icon-48x48.png" />
 
-        <title>Sesiones</title>
+        <title>Gráficas</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet" />
         <link
@@ -47,14 +47,14 @@
                                 <span class="align-middle">Cursos</span>
                             </a>
                         </li>
-                        <li class="sidebar-item active">
+                        <li class="sidebar-item">
                             <a class="sidebar-link" href="sessions.html">
                                 <i class="align-middle" data-feather="film"></i>
                                 <span class="align-middle">Sesiones</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="charts.html">
+                        <li class="sidebar-item active">
+                            <a class="sidebar-link" href="#">
                                 <i class="align-middle" data-feather="bar-chart-2"></i>
                                 <span class="align-middle">Gráficas</span>
                             </a>
@@ -87,32 +87,15 @@
 
                 <main class="content">
                     <div class="container-fluid p-0">
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <h1 class="h3 mb-3"><i class="align-middle" data-feather="film"></i> Sesiones</h1>
-                            </div>
-                            <div class="col-sm-6 text-end">
-                                <button type="button" id="newSessionButton" class="btn btn-success btn-lg px-5">
-                                    Nueva <i data-feather="plus-circle"></i>
-                                </button>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-12">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <table id="sessions" class="table table-striped" style="width: 100%">
-                                            <thead>
-                                                <tr>
-                                                    <th>Nombre del curso</th>
-                                                    <th>Número de sesión</th>
-                                                    <th>URL</th>
-                                                    <th>Activo</th>
-                                                    <th>Creado el</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody></tbody>
-                                        </table>
+                        <div class="col-sm-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h5 class="card-title">Personas inscritas por mes</h5>
+                                    <h6 class="card-subtitle text-muted">Cantidad de personas inscritas cada mes</h6>
+                                </div>
+                                <div class="card-body">
+                                    <div class="chart">
+                                        <canvas id="chartjs-bar"></canvas>
                                     </div>
                                 </div>
                             </div>
@@ -249,6 +232,6 @@
         <script src="js/app.js"></script>
         <script src="js/http.js"></script>
         <script src="js/utils.js"></script>
-        <script src="js/sessions.js"></script>
+        <script src="js/charts.js"></script>
     </body>
 </html>
